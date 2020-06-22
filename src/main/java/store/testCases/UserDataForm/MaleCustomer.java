@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 public class MaleCustomer extends AppiumCapabilities implements Commons {
 
-    public MaleCustomer(String SheetName, int Row) throws IOException {
+    public MaleCustomer(String SheetName, int Row) throws IOException, InterruptedException {
 
         System.out.println("Executing test case for the UserDataForm Screen : Male Customer.");
         AndroidDriver<AndroidElement> driver = capabilities();
@@ -33,6 +33,7 @@ public class MaleCustomer extends AppiumCapabilities implements Commons {
             excel.ReadWrite(SheetName, Row, 3, "FAIL");
         } finally {
             driver.closeApp();
+            Thread.sleep(1000);
         }
     }
 }

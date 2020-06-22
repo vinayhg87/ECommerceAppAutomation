@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 public class ToastMessageValidation extends AppiumCapabilities implements Commons {
 
-    public ToastMessageValidation(String SheetName, int Row) throws IOException {
+    public ToastMessageValidation(String SheetName, int Row) throws IOException, InterruptedException {
 
         System.out.println("Executing test case to validate Toast Error Message.");
         AndroidDriver<AndroidElement> driver = capabilities();
@@ -42,6 +42,7 @@ public class ToastMessageValidation extends AppiumCapabilities implements Common
             excel.ReadWrite(SheetName, Row, 3, "FAIL");
         } finally {
             driver.closeApp();
+            Thread.sleep(1000);
         }
     }
 }

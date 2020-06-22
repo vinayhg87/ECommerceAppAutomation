@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 public class PageHeader extends AppiumCapabilities implements Commons {
 
-    public PageHeader(String SheetName, int Row) throws IOException {
+    public PageHeader(String SheetName, int Row) throws IOException, InterruptedException {
 
         System.out.println("Executing test case to validate Header : General Store.");
         AndroidDriver<AndroidElement> driver = capabilities();
@@ -40,6 +40,7 @@ public class PageHeader extends AppiumCapabilities implements Commons {
             excel.ReadWrite(SheetName, Row, 3, "FAIL");
         } finally {
             driver.closeApp();
+            Thread.sleep(1000);
         }
     }
 }
