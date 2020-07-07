@@ -3,11 +3,12 @@ package main.java.store.capabilities;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.remote.MobileCapabilityType;
+import main.java.store.caller.Commons;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import java.io.IOException;
 import java.net.URL;
 
-public class AppiumCapabilities {
+public class AppiumCapabilities implements Commons {
 
     public AndroidDriver<AndroidElement> capabilities() throws IOException {
 
@@ -32,12 +33,12 @@ public class AppiumCapabilities {
         String appType = prop.readProperties("app.type");
         if (appType.equalsIgnoreCase("chrome")) {
             String chromeDriver = prop.readProperties("chrome.driver.path");
-            cap.setCapability("chromedriverExecutable", chromeDriver);
+            cap.setCapability("chromedriverExecutable", currentDir+chromeDriver);
             cap.setCapability(MobileCapabilityType.BROWSER_NAME, "Chrome");
         } else if (appType.equalsIgnoreCase("apk")) {
             /* Loading APK */
             String apkPath = prop.readProperties("apk.path");
-            cap.setCapability(MobileCapabilityType.APP, apkPath);
+            cap.setCapability(MobileCapabilityType.APP, currentDir+apkPath);
         } else {
             System.out.println("Invalid Value. Program Aborted.");
             System.exit(1);

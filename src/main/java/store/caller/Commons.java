@@ -2,7 +2,6 @@ package main.java.store.caller;
 
 import main.java.store.ExcelOps.ExcelOperations;
 import main.java.store.capabilities.PropertiesReader;
-
 import java.io.File;
 
 public interface Commons {
