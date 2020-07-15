@@ -41,8 +41,8 @@ public class ToastMessageValidation extends AppiumCapabilities implements Common
             System.out.println("Test case Failed.");
             excel.ReadWrite(SheetName, Row, 3, "FAIL");
         } finally {
-            driver.closeApp();
             Thread.sleep(1000);
+            driver.closeApp();
         }
     }
 }

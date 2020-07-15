@@ -22,7 +22,7 @@ public class PageHeader extends AppiumCapabilities implements Commons {
 
             if (webele.pageHeader.getText().equals("General Store")) {
                 webele.countrydropDown.click();
-                driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"Denmark\"));").click();
+                driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"Canada\"));").click();
                 webele.customerName.sendKeys("Vinay Gopinath");
                 driver.hideKeyboard(); // this is to hide the keyboard layout in-case if it is blocking the other web-elements.
                 webele.maleRadiobutton.click();
@@ -39,8 +39,8 @@ public class PageHeader extends AppiumCapabilities implements Commons {
             System.out.println("Test case Failed.");
             excel.ReadWrite(SheetName, Row, 3, "FAIL");
         } finally {
-            driver.closeApp();
             Thread.sleep(1000);
+            driver.closeApp();
         }
     }
 }

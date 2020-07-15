@@ -29,16 +29,27 @@ public class AppiumCapabilities implements Commons {
             System.exit(1);
         }
 
-        /* Selecting browser option */
+        /* Selecting browser  */
         String appType = prop.readProperties("app.type");
-        if (appType.equalsIgnoreCase("chrome")) {
-            String chromeDriver = prop.readProperties("chrome.driver.path");
-            cap.setCapability("chromedriverExecutable", currentDir+chromeDriver);
-            cap.setCapability(MobileCapabilityType.BROWSER_NAME, "Chrome");
-        } else if (appType.equalsIgnoreCase("apk")) {
+        if (appType.equalsIgnoreCase("browser")) {
+            /* Selecting the browser */
+            String browserType = prop.readProperties("browser.type");
+            if (browserType.equalsIgnoreCase("chrome")) {
+                String chromeDriver = prop.readProperties("chrome.driver.path");
+                cap.setCapability("chromedriverExecutable", currentDir + chromeDriver);
+                cap.setCapability(MobileCapabilityType.BROWSER_NAME, "Chrome");
+            }
+            if (browserType.equalsIgnoreCase("firefox")) {
+                String fireFoxDriver = prop.readProperties("firefox.driver.path");
+                cap.setCapability("chromedriverExecutable", currentDir + fireFoxDriver);
+                cap.setCapability(MobileCapabilityType.BROWSER_NAME, "Firefox");
+            }
+        }
+        /* Selecting APK files to run on a app */
+        else if (appType.equalsIgnoreCase("apk")) {
             /* Loading APK */
             String apkPath = prop.readProperties("apk.path");
-            cap.setCapability(MobileCapabilityType.APP, currentDir+apkPath);
+            cap.setCapability(MobileCapabilityType.APP, currentDir + apkPath);
         } else {
             System.out.println("Invalid Value. Program Aborted.");
             System.exit(1);
