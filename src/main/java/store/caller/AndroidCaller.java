@@ -18,9 +18,7 @@ public class AndroidCaller implements Commons {
             String SheetName = "UserDataForm";
             int RowCount = excel.RowCount(SheetName);
             for (int i = 1; i <= RowCount; i++) {
-                if (excel.ReadExcel(SheetName, i, 3).equalsIgnoreCase("FAIL")
-                        || excel.ReadExcel(SheetName, i, 3).equalsIgnoreCase("NO RUN")
-                        || excel.ReadExcel(SheetName, i, 3).equalsIgnoreCase(" ")) {
+                if (!excel.ReadExcel(SheetName, i, 3).equalsIgnoreCase("PASS")) {
                     String ClassName = "main.java.store.testCases.UserDataForm."
                             + excel.ReadExcel(SheetName, i, 2);
                     Class UserDataFormClass = Class.forName(ClassName);
