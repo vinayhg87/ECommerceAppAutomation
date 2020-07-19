@@ -18,12 +18,16 @@ public class AndroidCaller implements Commons {
             String SheetName = "UserDataForm";
             int RowCount = excel.RowCount(SheetName);
             for (int i = 1; i <= RowCount; i++) {
-                if (!excel.ReadExcel(SheetName, i, 3).equalsIgnoreCase("PASS")) {
+                if (!excel.ReadExcel(SheetName, i, 3).equalsIgnoreCase("PASS")
+                    || excel.ReadExcel(SheetName, i, 3).equalsIgnoreCase(" ")) {
                     String ClassName = "main.java.store.testCases.UserDataForm."
                             + excel.ReadExcel(SheetName, i, 2);
-                    Class UserDataFormClass = Class.forName(ClassName);
-                    Constructor constructor = UserDataFormClass.getConstructor(String.class, int.class);
-                    Object obj = constructor.newInstance(SheetName, i);
+                    /* Class is a raw type. References to generic type Class<T> should be parameterized.
+                       Hence using Class<?> to parameterize. if <?> not included, there wont be any error. compiler just throws warning.
+                       Same reason for Constructor<?>. This is the better way of implementation */ 
+                    Class<?> UserDataFormClass = Class.forName(ClassName);
+                    Constructor<?> constructor = UserDataFormClass.getConstructor(String.class, int.class);
+                    constructor.newInstance(SheetName, i);
                 } else {
                     System.out.println("This test case " + excel.ReadExcel(SheetName, i, 2)
                                                                          + " was executed with status PASS.");
