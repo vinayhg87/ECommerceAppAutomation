@@ -3,7 +3,6 @@ package main.java.store.testCases.UserDataForm;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import main.java.store.PageWebelements.UserDataForm;
-//import main.java.store.caller.Commons;
 import main.java.store.capabilities.AppiumCapabilities;
 import main.java.store.capabilities.Screenshot;
 import java.io.IOException;

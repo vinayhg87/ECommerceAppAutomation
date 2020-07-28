@@ -1,11 +1,14 @@
 package main.java.store.caller;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
+import main.java.store.capabilities.AppiumCapabilities;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
-public class AndroidCaller implements Commons {
+public class MainCaller implements Commons {
 
     public static void main(String[] args) throws IOException, InvalidFormatException, ClassNotFoundException,
             IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
@@ -36,8 +39,13 @@ public class AndroidCaller implements Commons {
         }
 
         /* Executing tests on mobile browser like chrome  */
-        else if (prop.readProperties("app.type").equalsIgnoreCase("chrome")) {
+        else if (prop.readProperties("app.type").equalsIgnoreCase("browser")) {
             System.out.println("Executing tests on mobile browser.");
+            AppiumCapabilities cap = new AppiumCapabilities();
+            AndroidDriver<AndroidElement> driver = cap.capabilities();
+            driver.get("https://www.stanford.edu/");
+            driver.findElementById("search-toggle").click();
+            driver.findElementById("search-field").sendKeys("dfsdf");
 
         } else {
             System.out.println("Invalid option. Check the value of app.type in property file androidDevice.properties.");
