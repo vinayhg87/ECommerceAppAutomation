@@ -3,11 +3,9 @@ package main.java.mobile.capabilities;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import main.java.mobile.caller.Commons;
-
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-
 import java.io.File;
 
 public class Screenshot implements Commons {

@@ -5,7 +5,6 @@ import io.appium.java_client.android.AndroidElement;
 import main.java.mobile.PageWebelements.app.UserDataForm;
 import main.java.mobile.capabilities.AppiumCapabilities;
 import main.java.mobile.capabilities.Screenshot;
-
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 

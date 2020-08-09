@@ -7,7 +7,6 @@ import main.java.mobile.caller.Commons;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import java.io.IOException;
 import java.net.URL;
-
 import com.google.common.collect.ImmutableMap;
 
 public class AppiumCapabilities implements Commons {
