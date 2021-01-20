@@ -21,7 +21,7 @@ public class AppiumCapabilities implements Commons {
         String device = prop.readProperties("device.type");
         if (device.equals("emulator_device")) {
             /* This is for Emulator */
-            cap.setCapability(MobileCapabilityType.DEVICE_NAME, "Android_Automation_AVD");
+            cap.setCapability(MobileCapabilityType.DEVICE_NAME, "emulator-5554");
         } else if (device.equalsIgnoreCase("real_device")) {
             /* This is a real Android device */
             cap.setCapability(MobileCapabilityType.DEVICE_NAME, "Android Device");
