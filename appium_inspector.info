@@ -1,0 +1,7 @@
+{
+  "platformName": "Android",
+  "appium:platformVersion": "13.0",
+  "appium:deviceName": "Pixel XL API 33",
+  "appium:automationName": "Appium",
+  "appium:app": "C:\\Users\\nichiuser\\IdeaProjects\\ECommerceAppAutomation\\apks\\general_store.apk"
+}

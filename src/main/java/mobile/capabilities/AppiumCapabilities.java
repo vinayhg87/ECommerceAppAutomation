@@ -21,7 +21,7 @@ public class AppiumCapabilities implements Commons {
         String device = prop.readProperties("device.type");
         if (device.equals("emulator_device")) {
             /* This is for Emulator */
-            cap.setCapability(MobileCapabilityType.DEVICE_NAME, "emulator-5554");
+            cap.setCapability(MobileCapabilityType.DEVICE_NAME, "Pixel XL API 33");
         } else if (device.equalsIgnoreCase("real_device")) {
             /* This is a real Android device */
             cap.setCapability(MobileCapabilityType.DEVICE_NAME, "Android Device");
@@ -38,11 +38,15 @@ public class AppiumCapabilities implements Commons {
             if (browserType.equalsIgnoreCase("chrome")) {
                 String chromeDriver = prop.readProperties("chrome.driver.path");
                 cap.setCapability("chromedriverExecutable", currentDir + chromeDriver);
+                //cap.setCapability(MobileCapabilityType.DEVICE_NAME, "Pixel XL API 33");
                 cap.setCapability(MobileCapabilityType.BROWSER_NAME, "Chrome");
-                /* w3c should be turned off due to compatability issue. if we turn on, then we will encounter an error such as 
+
+                /* w3c should be turned off due to compatability issue. if we turn on, then we will encounter an error such as
                 "invalid locator". w3c is the new technology used in Selenium 4. To make old code compatibility, we should set to false.
-                https://medium.com/@juanba48/selenium-4-is-now-w3c-compliant-what-does-this-mean-ceb44de2d29b */ 
-                cap.setCapability("appium:chromeOptions", ImmutableMap.of("w3c", false));
+                https://medium.com/@juanba48/selenium-4-is-now-w3c-compliant-what-does-this-mean-ceb44de2d29b
+                In Selenium 4, WebDriver W3C Protocol replaces the older JSON Wire protocol.
+                It essentially means that we no longer need to encode and decode the API request using the W3C protocol, and the tests can directly communicate with the web browser */
+               // cap.setCapability("appium:chromeOptions", ImmutableMap.of("w3c", false));
             }
             if (browserType.equalsIgnoreCase("firefox")) {
                 String fireFoxDriver = prop.readProperties("firefox.driver.path");
